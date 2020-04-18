@@ -1,0 +1,21 @@
+<form method="POST" action="weather">
+    <select name="manu" id="the_select" style="margin-right: 6px;">
+        <option>აირჩიე ქალაქი</option>
+        <option value="https://amindi.ge/abastumani/აბასთუმანი">აბასთუმანი</option>
+        <option value="https://amindi.ge/akhaltsikhe/ახალციხე">ახალციხე</option>
+        <option value="https://amindi.ge/batumi/ბათუმი">ბათუმი</option>
+</select>
+    <p><input value="ძიება" type="SUBMIT"></p>
+</form>
+
+<ol>
+{% for items in all_items %}
+    <li>{{items.find("div", {"class":"t25"}).text}}</li>
+    <li>{{items.find("div", {"class":"t252"}).text}}</li>    
+    <li>{{items.find("div", {"class":"tmp25"}).text.strip()}}</li> 
+{% for items in time_items %}
+    <li>{{items.find("div", {"class":"info_txt"}).text}}</li>
+    <li>{{items.find("div", {"class":"info_tmp"}).text}}</li>
+    {% endfor %}
+    {% endfor %}
+</ol>
